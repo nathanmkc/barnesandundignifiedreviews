@@ -11,6 +11,10 @@ class App extends React.Component {
       }
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:8000/reviews')
+  }
+
   render() {
       return (
           <div>
