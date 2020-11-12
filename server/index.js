@@ -1,27 +1,50 @@
 const express = require('express');
 const app = express();
+const model = require('../database/models.js');
 const port = 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('client/dist/'));
 
-app.get('/reviews/:ISBN', (req, res) => {
-  if (Number.isNaN(Number(req.params.ISBN))) {
-    console.log(typeof(req.params.ISBN));
-    console.log(req.params.ISBN);
+app.get('/reviews/:identifier', (req, res) => {
+  if (Number.isNaN(Number(req.params.identifier))) {
+    model.get({title: req.params.identifier}, (err, data) => {
+      if (err) {
+        res.status(400).send('Controller: Error in get');
+      } else {
+        res.status(200).send(data);
+      }
+    });
   } else {
-    console.log(typeof(Number(req.params.ISBN)));
-    console.log(Number(req.params.ISBN));
+    model.get({ISBN: req.params.identifier}, (err, data) => {
+      if (err) {
+        res.status(400).send('Controller: Error in get');
+      } else {
+        res.status(200).send(data);
+      }
+    });
   }
-  res.end();
 })
 
-app.put('/reviews/:ISBN/yes/:id', (req, res) => {
-  res.end();
+app.put('/reviews/:identifier/yes/:id', (req, res) => {
+  if (Number.isNaN(Number(req.params.identifier))) {
+    console.log(typeof(req.params.identifier));
+    console.log(req.params.identifier);
+  } else {
+    console.log(typeof(Number(req.params.identifier)));
+    console.log(Number(req.params.identifier));
+  }
 })
 
-app.put('/reviews/:ISBN/no/:id', (req, res) => {
+app.put('/reviews/:identifier/no/:id', (req, res) => {
+  if (Number.isNaN(Number(req.params.identifier))) {
+    console.log(typeof(req.params.identifier));
+    console.log(req.params.identifier);
+  } else {
+    console.log(typeof(Number(req.params.identifier)));
+    console.log(Number(req.params.identifier));
+  }
   res.end();
 })
 
