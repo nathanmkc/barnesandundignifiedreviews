@@ -1,0 +1,73 @@
+body {
+  text-align: -webkit-center;
+}
+#root {
+  padding: 2.25rem 5.35rem;
+  width: 1024px;
+  display: flex;
+  position: relative;
+  line-height: 1.5;
+  font-size: .9375rem;
+}
+
+.main {
+  width: 100%;
+  font-weight: lighter;
+}
+
+h2.app-header {
+  font-family: 'Poynter',Georgia,serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: x-large;
+  align-items: flex-end;
+}
+
+.app-component {
+  display: flex;
+  margin-left: 69px;
+  margin-right: 69px;
+}
+
+.summary-element {
+  display: flex;
+  float: left;
+  padding: 5px;
+}
+
+.review-count {
+  color: darkgreen;
+  border-left: solid 1px darkgray;
+  padding-left:10px;
+}
+
+.avg-review {
+  padding-right: 10px
+}
+
+h2.app-header:after,
+h2.app-header:before {
+  content: " ";
+  position: relative;
+  background-color: #ccc;
+  display: flex;
+  height: 1px;
+  flex-grow: .5;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+h2.app-header:after {
+  margin-left: .5em;
+}
+h2.app-header:before {
+  margin-right: .5em;
+}
+
+.search-box {
+  background-color: #f7f7f7;
+}
+
+.summary-bar {
+  padding: 15px 20px;
+}
