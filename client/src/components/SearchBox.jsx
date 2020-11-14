@@ -1,12 +1,13 @@
 import React from 'react';
+import SearchBar from './SearchBar.jsx'
 import StarRatings from 'react-star-ratings';
 
-function SearchBox ({avgRating, reviewCount}) {
+function SearchBox ({avgRating, reviewCount, recommendedReviewCount, handleSearchChange}) {
     return (
-     <div class="app-component search-box">
+      <div class="app-component search-box">
         <div class="summary-bar">
           <div class="summary-bar-line-one">
-            <div class="summary-element">
+            <div class="summary-element summary-stars">
               <StarRatings
               rating={avgRating}
               starDimension="14px"
@@ -20,9 +21,13 @@ function SearchBox ({avgRating, reviewCount}) {
             <div class="summary-element review-count">
               {reviewCount} Reviews
             </div>
-         </div>
-       </div>
-     </div>
+          </div>
+          <div class="summary-bar-line-two">
+            {recommendedReviewCount} out of {reviewCount} ({((recommendedReviewCount/reviewCount)*100).toFixed(0)}%) reviewers recommend this product
+          </div>
+        </div>
+        <SearchBar handleSearchChange={handleSearchChange}/>
+      </div>
     );
 };
 
