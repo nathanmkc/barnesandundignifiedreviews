@@ -111,3 +111,62 @@ h2.app-header:before {
 .summary-bar-line-two {
   display: flex;
 }
+
+.breakdown-box {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  padding-top: 5px;
+  display:block;
+}
+
+.breakdown-box-top-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.breakdown-box-bottom {
+  display:flex;
+}
+
+.breakdown-box-section {
+  width: 50%;
+  text-align: left;
+}
+
+.breakdown-box-section h4 {
+  padding-left: 8px;
+  margin-bottom: 2px;
+}
+
+.breakdown-box-section p {
+  font-size: 14px;
+  padding-left: 8px;
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+.breakdown-box-summary {
+  font-size: 13px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 8px;
+    width: 50%;
+}
+
+.breakdown-box-stars > .star-ratings{
+  padding-left: 15px;
+}
+
+.MuiButton-label {
+  text-transform: none;
+  background-color: #3d6db5;
+  color: white;
+  padding: 10px 10px;
+}
+
+.MuiButton-text.write-review-button {
+  padding-right: 0px;
+}

@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import SearchBox from './components/SearchBox.jsx';
-
+import BreakdownBox from './components/BreakdownBox.jsx';
 
 class App extends React.Component {
   constructor(props) {
       super(props)
       this.state = {
           allReviews: [],
+          avgRating: 0,
           search: ''
       }
       this.getReviews = this.getReviews.bind(this);
@@ -24,7 +25,9 @@ class App extends React.Component {
   getReviews() {
     axios.get('http://localhost:8000/reviews/4894941353195')
     .then((results) => {
-      this.setState({allReviews: results.data[0].reviews});
+      this.setState({allReviews: results.data[0].reviews}, () => {
+        this.findAvgReviewRating();
+      });
     })
   }
 
@@ -35,15 +38,18 @@ class App extends React.Component {
   handleSearchChange(e) {
     e.preventDefault();
     this.setState({search: e.target.value})
+    console.log(this.state);
   }
 
   findAvgReviewRating() {
     var total = this.state.allReviews.reduce((acc, review) => {return acc + review.rating},0);
+    console.log(this.state);
     var avg = total/this.state.allReviews.length;
     if (isNaN(avg)) {
       avg=0;
     }
-    return Number(avg.toFixed(1));
+    console.log(avg);
+    this.setState({avgRating: Number(avg.toFixed(1))});
   }
 
   countRecommendedReviews() {
@@ -61,7 +67,8 @@ class App extends React.Component {
       return (
           <div class="main">
             <h2 class="app-header app-component">Customer Reviews</h2>
-            <SearchBox avgRating={this.findAvgReviewRating()} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
+            <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
+            <BreakdownBox avgRating={this.state.avgRating}/>
           </div>
       )
   }

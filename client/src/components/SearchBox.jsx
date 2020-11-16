@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from './SearchBar.jsx'
+import SearchBar from './SearchBar.jsx';
 import StarRatings from 'react-star-ratings';
 
 function SearchBox ({avgRating, reviewCount, recommendedReviewCount, handleSearchChange}) {

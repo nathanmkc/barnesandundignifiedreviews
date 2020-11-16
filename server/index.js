@@ -27,6 +27,26 @@ app.get('/reviews/:identifier', (req, res) => {
   }
 })
 
+app.get('/reviewssummary/:identifier', (req, res) => {
+  if (Number.isNaN(Number(req.params.identifier))) {
+    model.getAvg({title: req.params.identifier}, (err, data) => {
+      if (err) {
+        res.status(400).send('Controller: Error in get');
+      } else {
+        res.status(200).send(data);
+      }
+    });
+  } else {
+    model.getAvg({ISBN: req.params.identifier}, (err, data) => {
+      if (err) {
+        res.status(400).send('Controller: Error in get');
+      } else {
+        res.status(200).send(data);
+      }
+    });
+  }
+})
+
 app.put('/reviews/:identifier/yes/:id', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
     console.log(typeof(req.params.identifier));
