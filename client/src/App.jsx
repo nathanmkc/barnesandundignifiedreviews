@@ -29,6 +29,9 @@ class App extends React.Component {
         this.findAvgReviewRating();
       });
     })
+    .catch((err) => {
+      console.log('error in get request to reviews:' + err);
+    })
   }
 
   handleClick() {
@@ -38,17 +41,16 @@ class App extends React.Component {
   handleSearchChange(e) {
     e.preventDefault();
     this.setState({search: e.target.value})
-    console.log(this.state);
   }
 
   findAvgReviewRating() {
     var total = this.state.allReviews.reduce((acc, review) => {return acc + review.rating},0);
-    console.log(this.state);
-    var avg = total/this.state.allReviews.length;
-    if (isNaN(avg)) {
+    var avg;
+    if (this.state.allReviews.length === 0) {
       avg=0;
+    } else {
+      var avg = total/this.state.allReviews.length;
     }
-    console.log(avg);
     this.setState({avgRating: Number(avg.toFixed(1))});
   }
 
