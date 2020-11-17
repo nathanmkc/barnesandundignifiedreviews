@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SearchBox from './components/SearchBox.jsx';
 import BreakdownBox from './components/BreakdownBox.jsx';
+import Review from './components/Review.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -71,6 +72,9 @@ class App extends React.Component {
             <h2 class="app-header app-component">Customer Reviews</h2>
             <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox avgRating={this.state.avgRating}/>
+            {this.state.allReviews.length !== 0 &&
+              <Review review={this.state.allReviews[0]} />
+            }
           </div>
       )
   }
