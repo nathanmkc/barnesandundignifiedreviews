@@ -24,9 +24,9 @@ class App extends React.Component {
   }
 
   getReviews() {
-    axios.get('http://localhost:8000/reviews/4894941353195')
+    axios.get('http://localhost:8000/books/4894941353195/reviews')
     .then((results) => {
-      this.setState({allReviews: results.data[0].reviews}, () => {
+      this.setState({allReviews: results.data}, () => {
         this.findAvgReviewRating();
       });
     })

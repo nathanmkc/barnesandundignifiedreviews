@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('client/dist/'));
 
-app.get('/reviews/:identifier', (req, res) => {
+app.get('/books/:identifier/reviews', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
     model.get({title: req.params.identifier}, (err, data) => {
       if (err) {
@@ -21,13 +21,13 @@ app.get('/reviews/:identifier', (req, res) => {
       if (err) {
         res.status(400).send('Controller: Error in get');
       } else {
-        res.status(200).send(data);
+        res.status(200).send(data[0].reviews);
       }
     });
   }
 })
 
-app.get('/reviewssummary/:identifier', (req, res) => {
+app.get('/books/:identifier/reviews/summary', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
     model.getAvg({title: req.params.identifier}, (err, data) => {
       if (err) {
@@ -47,7 +47,7 @@ app.get('/reviewssummary/:identifier', (req, res) => {
   }
 })
 
-app.put('/reviews/:identifier/yes/:id', (req, res) => {
+app.put('/books/:identifier/review/:id', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
     console.log(typeof(req.params.identifier));
     console.log(req.params.identifier);
@@ -57,7 +57,7 @@ app.put('/reviews/:identifier/yes/:id', (req, res) => {
   }
 })
 
-app.put('/reviews/:identifier/no/:id', (req, res) => {
+app.put('/books/:identifier/review/:id', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
     console.log(typeof(req.params.identifier));
     console.log(req.params.identifier);
