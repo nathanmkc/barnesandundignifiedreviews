@@ -9,11 +9,12 @@ class App extends React.Component {
       super(props)
       this.state = {
           allReviews: [],
+          selectedReviews: [],
+          displayedReviews: [],
           avgRating: 0,
           search: ''
       }
       this.getReviews = this.getReviews.bind(this);
-      this.handleClick = this.handleClick.bind(this);
       this.findAvgReviewRating = this.findAvgReviewRating.bind(this);
       this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -26,17 +27,13 @@ class App extends React.Component {
   getReviews() {
     axios.get('http://localhost:8000/books/4894941353195/reviews')
     .then((results) => {
-      this.setState({allReviews: results.data}, () => {
+      this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8)}, () => {
         this.findAvgReviewRating();
       });
     })
     .catch((err) => {
       console.log('error in get request to reviews:' + err);
     })
-  }
-
-  handleClick() {
-
   }
 
   handleSearchChange(e) {
@@ -72,8 +69,10 @@ class App extends React.Component {
             <h2 class="app-header app-component">Customer Reviews</h2>
             <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox avgRating={this.state.avgRating}/>
-            {this.state.allReviews.length !== 0 &&
-              <Review review={this.state.allReviews[0]} />
+            {this.state.displayedReviews.length !== 0 &&
+              this.state.displayedReviews.map((review) => {
+                return <Review review={review} />
+              })
             }
           </div>
       )
