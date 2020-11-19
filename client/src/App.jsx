@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+
 import SearchBox from './components/SearchBox.jsx';
 import BreakdownBox from './components/BreakdownBox.jsx';
-import Review from './components/Review.jsx'
+import Review from './components/Review.jsx';
+import SortBar from './components/SortBar.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +13,8 @@ class App extends React.Component {
           allReviews: [],
           selectedReviews: [],
           displayedReviews: [],
+          startIndex: 0,
+          endIndex: 0,
           avgRating: 0,
           search: ''
       }
@@ -25,9 +29,10 @@ class App extends React.Component {
   }
 
   getReviews() {
-    axios.get('http://localhost:8000/books/4894941353195/reviews')
+    axios.get('http://localhost:8000/books/5628928328257/reviews')
     .then((results) => {
-      this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8)}, () => {
+      this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
+        console.log(this.state);
         this.findAvgReviewRating();
       });
     })
@@ -69,6 +74,7 @@ class App extends React.Component {
             <h2 class="app-header app-component">Customer Reviews</h2>
             <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox avgRating={this.state.avgRating}/>
+            <SortBar start={this.state.startIndex + 1} end={this.state.endIndex} total={this.state.selectedReviews.length}/>
             {this.state.displayedReviews.length !== 0 &&
               this.state.displayedReviews.map((review) => {
                 return <Review review={review} />

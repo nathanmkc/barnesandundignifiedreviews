@@ -200,6 +200,24 @@ h2.app-header:before {
 
 
 
+
+
+.sort-bar {
+  justify-content: space-between;
+  font-weight: 700;
+  background-color: rgb(247 247 247);
+  font-size: 16px;
+  font-family: Lato, sans-serif;
+  padding: 15px 10px;
+}
+
+
+
+
+
+
+
+
 .review-box {
   border-top: solid 1px #eeeeed;
   margin-top: 7px;
