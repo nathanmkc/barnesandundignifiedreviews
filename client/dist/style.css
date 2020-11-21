@@ -59,6 +59,10 @@ h2.app-header:before {
 
 
 
+.summary-bar {
+  font-weight: 400;
+}
+
 .summary-element {
   display: flex;
   float: left;
