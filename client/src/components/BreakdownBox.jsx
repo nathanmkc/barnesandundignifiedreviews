@@ -4,20 +4,20 @@ import StarRatings from 'react-star-ratings';
 
 function BreakdownBox ({avgRating}) {
   return (
-      <div class="app-component breakdown-box">
-        <div class="breakdown-box-top-bar">
-          <h2 class="breakdown-box">REVIEWS</h2>
+      <div className="app-component breakdown-box">
+        <div className="breakdown-box-top-bar">
+          <h2 className="breakdown-box">REVIEWS</h2>
           <Button className="write-review-button" children="Write a Review"/>
         </div>
-        <div class="breakdown-box-bottom">
-          <div class="breakdown-box-section">
+        <div className="breakdown-box-bottom">
+          <div className="breakdown-box-section">
             <h4>Rating Snapshot</h4>
             <p>Select a row below to filter reviews.</p>
           </div>
-          <div class="breakdown-box-section">
+          <div className="breakdown-box-section">
             <h4>Average Customer Ratings</h4>
-            <div class="breakdown-box-summary">
-              <div class="breakdown-box-stars">
+            <div className="breakdown-box-summary">
+              <div className="breakdown-box-stars">
                 Overall
                 <StarRatings
                   rating={avgRating}

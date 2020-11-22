@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1606021675855" clover="3.2.0">
+  <project timestamp="1606021675855" name="All files">
+    <metrics statements="59" coveredstatements="34" conditionals="20" coveredconditionals="9" methods="35" coveredmethods="21" elements="114" coveredelements="64" complexity="0" loc="59" ncloc="59" packages="2" files="10" classes="10"/>
+    <package name="src">
+      <metrics statements="47" coveredstatements="24" conditionals="16" coveredconditionals="5" methods="23" coveredmethods="11"/>
+      <file name="App.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/App.jsx">
+        <metrics statements="47" coveredstatements="24" conditionals="16" coveredconditionals="5" methods="23" coveredmethods="11"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="54" count="108" type="stmt"/>
+        <line num="56" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="59" count="4" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="65" count="11" type="stmt"/>
+        <line num="66" count="216" type="cond" truecount="2" falsecount="0"/>
+        <line num="67" count="112" type="stmt"/>
+        <line num="69" count="104" type="stmt"/>
+        <line num="72" count="11" type="stmt"/>
+        <line num="76" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="93" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="105" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="108" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="120" count="11" type="stmt"/>
+        <line num="128" count="64" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="12" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="12" coveredmethods="10"/>
+      <file name="BreakdownBox.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/BreakdownBox.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="11" type="stmt"/>
+      </file>
+      <file name="HelpfulVoter.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/HelpfulVoter.jsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="4" count="64" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+      </file>
+      <file name="NavBar.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/NavBar.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="11" type="stmt"/>
+      </file>
+      <file name="Review.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/Review.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="64" type="stmt"/>
+      </file>
+      <file name="ReviewAuthorSummary.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/ReviewAuthorSummary.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="64" type="stmt"/>
+      </file>
+      <file name="ReviewBody.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/ReviewBody.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="8" count="64" type="stmt"/>
+        <line num="39" count="192" type="stmt"/>
+      </file>
+      <file name="SearchBar.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/SearchBar.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="11" type="stmt"/>
+      </file>
+      <file name="SearchBox.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/SearchBox.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="11" type="stmt"/>
+      </file>
+      <file name="SortBar.jsx" path="/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/client/src/components/SortBar.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="11" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
