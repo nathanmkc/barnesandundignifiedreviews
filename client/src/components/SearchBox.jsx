@@ -4,10 +4,10 @@ import StarRatings from 'react-star-ratings';
 
 function SearchBox ({avgRating, reviewCount, recommendedReviewCount, handleSearchChange}) {
     return (
-      <div class="app-component search-box">
-        <div class="summary-bar">
-          <div class="summary-bar-line-one">
-            <div class="summary-element summary-stars">
+      <div className="app-component search-box">
+        <div className="summary-bar">
+          <div className="summary-bar-line-one">
+            <div className="summary-element summary-stars">
               <StarRatings
               rating={avgRating}
               starDimension="14px"
@@ -15,14 +15,14 @@ function SearchBox ({avgRating, reviewCount, recommendedReviewCount, handleSearc
               starRatedColor="orange"
             />
             </div>
-            <div class="summary-element avg-review">
+            <div className="summary-element avg-review">
               {avgRating}
             </div>
-            <div class="summary-element review-count">
+            <div className="summary-element review-count">
               {reviewCount} Reviews
             </div>
           </div>
-          <div class="summary-bar-line-two">
+          <div className="summary-bar-line-two">
             {recommendedReviewCount} out of {reviewCount} ({((recommendedReviewCount/reviewCount)*100).toFixed(0)}%) reviewers recommend this product
           </div>
         </div>

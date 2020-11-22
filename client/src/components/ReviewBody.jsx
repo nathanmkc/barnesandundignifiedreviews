@@ -6,49 +6,49 @@ import HelpfulVoter from './HelpfulVoter.jsx';
 
 function ReviewBody ({review, voteClickHandler}) {
   return (
-    <div class="review-body">
-      <div class="review-body-rating">
+    <div className="review-body">
+      <div className="review-body-rating">
         <StarRatings
           rating={review.rating}
           starDimension="14px"
           starSpacing=".5px"
           starRatedColor="orange"
         />
-        <span class="review-body-dot">·</span><span class="review-body-moment">{moment(review.createdAt).fromNow()}</span>
+        <span className="review-body-dot">·</span><span className="review-body-moment">{moment(review.createdAt).fromNow()}</span>
       </div>
-      <div class="review-body-title">
+      <div className="review-body-title">
         {review.title}
       </div>
-      <div class="review-body-text">
+      <div className="review-body-text">
         {review.body}
       </div>
-      <div class="spoiler-bar">
-        <span class="spoiler-bar-static">
+      <div className="spoiler-bar">
+        <span className="spoiler-bar-static">
           Review Contains Spoilers:
         </span>
-        <span class="spoiler-bar-variable">
+        <span className="spoiler-bar-variable">
           {review.spoilers ? 'Yes' : 'No'}
         </span>
       </div>
-      <div class="spoiler-bar">
-        <span class="spoiler-bar-static">
+      <div className="spoiler-bar">
+        <span className="spoiler-bar-static">
           <Icon name="tags" className="tag-icon"/>Tags:
         </span>
-        <span class="spoiler-bar-variable">
+        <span className="spoiler-bar-variable">
           {review.tags.map((tag) => {
             return (
-              <span class="tag">
+              <span className="tag">
                 {tag.tagName + ','}
               </span>
           )})}
         </span>
       </div>
       {review.recommended &&
-        <div class="spoiler-bar">
-          <span class="spoiler-bar-static">
-            <Icon name="check circle" className="check-icon"/>Yes,
+        <div className="spoiler-bar">
+          <span className="spoiler-bar-static">
+            <Icon name="check circle" classNameName="check-icon"/>Yes,
           </span>
-          <span class="spoiler-bar-variable">
+          <span className="spoiler-bar-variable">
             I recommend this product.
           </span>
         </div>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -124,7 +124,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,7 +155,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">192x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,51 +183,51 @@ import moment from 'moment';
 import { Icon } from 'semantic-ui-react';
 import HelpfulVoter from './HelpfulVoter.jsx';
 &nbsp;
-function <span class="fstat-no" title="function not covered" >ReviewBody </span>({review, voteClickHandler}) {
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div class="review-body"&gt;
-      &lt;div class="review-body-rating"&gt;
+function ReviewBody ({review, voteClickHandler}) {
+  return (
+    &lt;div className="review-body"&gt;
+      &lt;div className="review-body-rating"&gt;
         &lt;StarRatings
           rating={review.rating}
           starDimension="14px"
           starSpacing=".5px"
           starRatedColor="orange"
         /&gt;
-        &lt;span class="review-body-dot"&gt;·&lt;/span&gt;&lt;span class="review-body-moment"&gt;{moment(review.createdAt).fromNow()}&lt;/span&gt;
+        &lt;span className="review-body-dot"&gt;·&lt;/span&gt;&lt;span className="review-body-moment"&gt;{moment(review.createdAt).fromNow()}&lt;/span&gt;
       &lt;/div&gt;
-      &lt;div class="review-body-title"&gt;
+      &lt;div className="review-body-title"&gt;
         {review.title}
       &lt;/div&gt;
-      &lt;div class="review-body-text"&gt;
+      &lt;div className="review-body-text"&gt;
         {review.body}
       &lt;/div&gt;
-      &lt;div class="spoiler-bar"&gt;
-        &lt;span class="spoiler-bar-static"&gt;
+      &lt;div className="spoiler-bar"&gt;
+        &lt;span className="spoiler-bar-static"&gt;
           Review Contains Spoilers:
         &lt;/span&gt;
-        &lt;span class="spoiler-bar-variable"&gt;
+        &lt;span className="spoiler-bar-variable"&gt;
           {review.spoilers ? 'Yes' : 'No'}
         &lt;/span&gt;
       &lt;/div&gt;
-      &lt;div class="spoiler-bar"&gt;
-        &lt;span class="spoiler-bar-static"&gt;
+      &lt;div className="spoiler-bar"&gt;
+        &lt;span className="spoiler-bar-static"&gt;
           &lt;Icon name="tags" className="tag-icon"/&gt;Tags:
         &lt;/span&gt;
-        &lt;span class="spoiler-bar-variable"&gt;
-          {review.tags.map(<span class="fstat-no" title="function not covered" >(t</span>ag) =&gt; {
-<span class="cstat-no" title="statement not covered" >            return (</span>
-              &lt;span class="tag"&gt;
+        &lt;span className="spoiler-bar-variable"&gt;
+          {review.tags.map((tag) =&gt; {
+            return (
+              &lt;span className="tag"&gt;
                 {tag.tagName + ','}
               &lt;/span&gt;
           )})}
         &lt;/span&gt;
       &lt;/div&gt;
       {review.recommended &amp;&amp;
-        &lt;div class="spoiler-bar"&gt;
-          &lt;span class="spoiler-bar-static"&gt;
-            &lt;Icon name="check circle" className="check-icon"/&gt;Yes,
+        &lt;div className="spoiler-bar"&gt;
+          &lt;span className="spoiler-bar-static"&gt;
+            &lt;Icon name="check circle" classNameName="check-icon"/&gt;Yes,
           &lt;/span&gt;
-          &lt;span class="spoiler-bar-variable"&gt;
+          &lt;span className="spoiler-bar-variable"&gt;
             I recommend this product.
           &lt;/span&gt;
         &lt;/div&gt;
@@ -244,7 +244,7 @@ export default ReviewBody;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Nov 21 2020 02:43:32 GMT-0800 (Pacific Standard Time)
+                at Sat Nov 21 2020 21:07:55 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

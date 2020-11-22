@@ -4,7 +4,7 @@ import ReviewBody from './ReviewBody.jsx';
 
 function Review ({review, voteClickHandler}) {
   return (
-    <div class="app-component review-box">
+    <div className="app-component review-box">
       <ReviewAuthorSummary review={review}/>
       <ReviewBody review={review} voteClickHandler={voteClickHandler}/>
     </div>

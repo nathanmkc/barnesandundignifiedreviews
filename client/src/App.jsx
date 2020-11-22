@@ -30,14 +30,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews();
+    return this.getReviews();
   }
 
   getReviews() {
-    axios.get('http://localhost:8000/books/4132539681597/reviews')
+    return axios.get('http://localhost:8000/books/4132539681597/reviews')
     .then((results) => {
       this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
-        console.log(this.state);
         this.findAvgReviewRating();
       });
     })
@@ -80,7 +79,6 @@ class App extends React.Component {
     axios.put(`http://localhost:8000/books/4132539681597/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
-        console.log(this.state);
       });
     })
     .catch((err) => {
@@ -120,8 +118,8 @@ class App extends React.Component {
 
   render() {
       return (
-          <div class="main">
-            <h2 class="app-header app-component">Customer Reviews</h2>
+          <div className="main">
+            <h2 className="app-header app-component">Customer Reviews</h2>
             <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox avgRating={this.state.avgRating}/>
             <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length}/>

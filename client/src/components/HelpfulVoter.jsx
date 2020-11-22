@@ -2,7 +2,7 @@ import React from 'react';
 
 function HelpfulVoter ({review, voteClickHandler}) {
   return (
-    <div class="helpful-voter">
+    <div className="helpful-voter">
       <p>
         Helpful?
       </p>
