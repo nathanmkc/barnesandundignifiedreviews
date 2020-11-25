@@ -46,7 +46,7 @@ function ReviewBody ({review, voteClickHandler}) {
       {review.recommended &&
         <div className="spoiler-bar">
           <span className="spoiler-bar-static">
-            <Icon name="check circle" classNameName="check-icon"/>Yes,
+            <Icon name="check circle" className="check-icon"/>Yes,
           </span>
           <span className="spoiler-bar-variable">
             I recommend this product.

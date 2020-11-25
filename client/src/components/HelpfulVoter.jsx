@@ -6,10 +6,10 @@ function HelpfulVoter ({review, voteClickHandler}) {
       <p>
         Helpful?
       </p>
-      <p onClick={()=>{voteClickHandler('yes', review._id)}}>
+      <p className="left-arrow" onClick={()=>{voteClickHandler('yes', review._id)}}>
         Yes
       </p>
-      <p onClick={()=>{voteClickHandler('no', review._id)}}>
+      <p className="right-arrow" onClick={()=>{voteClickHandler('no', review._id)}}>
         No
       </p>
       <p>

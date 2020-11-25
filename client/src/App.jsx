@@ -76,7 +76,7 @@ class App extends React.Component {
     if (this.state[id]) {
       return;
     }
-    axios.put(`http://localhost:8000/books/4132539681597/review/${id}`, {type: type})
+    return axios.put(`http://localhost:8000/books/4132539681597/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
       });
@@ -88,22 +88,35 @@ class App extends React.Component {
 
   leftArrowClickHandler() {
     if (this.state.startIndex === 0) {
-      return;
+      return new Promise((resolve, reject) => {
+        resolve('success');
+        reject('error');
+      });
     }
     if (this.state.startIndex < 8) {
-      this.setState({startIndex: 0, endIndex: this.state.selectedReviews.slice(0,8).length}, () => {
-        this.setState({displayedReviews: this.state.selectedReviews.slice(this.state.startIndex, this.state.endIndex)});
+      return this.setState({startIndex: 0, endIndex: this.state.selectedReviews.slice(0,8).length}, () => {
+        this.setState({displayedReviews: this.state.selectedReviews.slice(this.state.startIndex, this.state.endIndex)}, () => {
+          return new Promise((resolve, reject) => {
+            resolve('success');
+            reject('error');
+          });
+        });
       });
     } else {
       this.setState({startIndex: this.state.startIndex - 8, endIndex: this.state.endIndex - 8}, () => {
-        this.setState({displayedReviews: this.state.selectedReviews.slice(this.state.startIndex, this.state.endIndex)});
+        this.setState({displayedReviews: this.state.selectedReviews.slice(this.state.startIndex, this.state.endIndex)}, () => {
+          return new Promise((resolve, reject) => {
+            resolve('success');
+            reject('error');
+          });
+        });
       })
     }
   }
 
   rightArrowClickHandler() {
     if (this.state.endIndex === this.state.selectedReviews.length) {
-      return;
+      return
     }
     if (this.state.endIndex > this.state.selectedReviews.length -8) {
       this.setState({startIndex: this.state.selectedReviews.length-9, endIndex: this.state.selectedReviews.length}, () => {
@@ -124,8 +137,8 @@ class App extends React.Component {
             <BreakdownBox avgRating={this.state.avgRating}/>
             <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length}/>
             {this.state.displayedReviews.length !== 0 &&
-              this.state.displayedReviews.map((review) => {
-                return <Review review={review} voteClickHandler={this.voteClickHandler}/>
+              this.state.displayedReviews.map((review, idx) => {
+                return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx}/>
               })
             }
             <NavBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} leftArrowClickHandler={this.leftArrowClickHandler} rightArrowClickHandler={this.rightArrowClickHandler}/>

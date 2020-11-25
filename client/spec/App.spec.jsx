@@ -5,7 +5,6 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 import App from '../src/App.jsx';
-import HelpfulVoter from '../src/components/HelpfulVoter.jsx';
 
 Enzyme.configure({ adapter: new Adapter()});
 
@@ -821,34 +820,109 @@ const mockData = [
       "helpfulNo": 11
   }
 ];
+var mock = new MockAdapter(axios);
+mock.onGet('http://localhost:8000/books/4132539681597/reviews').reply(200, mockData);
+mock.onPut('http://localhost:8000/books/4132539681597/review/1234').reply(200);
 
 describe('App component', () => {
   test('renders', () => {
-    var mock = new MockAdapter(axios);
-    mock.onGet('http://localhost:8000/books/4132539681597/reviews').reply(200, mockData);
     const wrapper = mount(<App />);
 
     expect(wrapper.exists()).toBe(true);
   });
   test('renders 1 main element', () => {
-    var mock = new MockAdapter(axios);
-    mock.onGet('http://localhost:8000/books/4132539681597/reviews').reply(200, mockData);
     const wrapper = mount(<App />);
-    expect(wrapper.find('div')).toHaveLength(35);
+
     expect(wrapper.find('.main')).toHaveLength(1);
   });
   test('axios request is properly called and state is set', () => {
-    var mock = new MockAdapter(axios);
-    mock.onGet('http://localhost:8000/books/4132539681597/reviews').reply(200, mockData);
     const wrapper = mount(<App />);
-    wrapper
+    return wrapper
       .instance()
       .componentDidMount()
       .then(() => {
         wrapper.update();
-        console.log(wrapper.find('div').getElements())
         expect(wrapper.state()).toHaveProperty('endIndex', 8);
-        expect(wrapper.find('.review-box')).toHaveLength(7);
+        expect(wrapper.find('.review-box')).toHaveLength(8);
       });
   });
+  test('voteClickHandler properly updates state to disable further votes', () => {
+    const wrapper = mount(<App />);
+    return wrapper
+      .instance()
+      .voteClickHandler('yes', 1234)
+      .then(() => {
+        wrapper.update();
+        expect(wrapper.state()).toHaveProperty('1234', 'disabled');
+      });
+  });
+  test('clicking left arrow while start index is 0 does not change state', () => {
+    const wrapper = mount(<App />);
+    return wrapper
+      .instance()
+      .componentDidMount()
+      .then(() => {
+        wrapper
+        .instance()
+        .leftArrowClickHandler()
+        .then(() => {
+          wrapper.update();
+          expect(wrapper.state()).toHaveProperty('startIndex', 0);
+        });
+      });
+  });
+  test('clicking right arrow updates start and end indexes', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.rightArrowClickHandler()
+      wrapper.update();
+      expect(wrapper.state()).toHaveProperty('startIndex', 8);
+      expect(wrapper.state()).toHaveProperty('endIndex', 16);
+    });
+  });
+  test('clicking right arrow many times does not cause end index to exceed review count', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      wrapper.update();
+      expect(wrapper.state()).toHaveProperty('endIndex', 27);
+    });
+  });
+  test('clicking left arrow after right arrows properly sets indexes', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.rightArrowClickHandler();
+      instance.leftArrowClickHandler();
+      instance.leftArrowClickHandler();
+      instance.leftArrowClickHandler();
+      instance.leftArrowClickHandler();
+      instance.leftArrowClickHandler();
+      instance.leftArrowClickHandler();
+      instance.leftArrowClickHandler();
+      wrapper.update();
+      expect(wrapper.state()).toHaveProperty('startIndex', 0);
+      expect(wrapper.state()).toHaveProperty('endIndex', 8);
+    });
+  });
 });
+
