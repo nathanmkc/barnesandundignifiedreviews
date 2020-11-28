@@ -40,6 +40,7 @@ function SortBar ({start, end, total, handleSortMenuChange}) {
         <Dropdown
           inline
           simple
+          item
           options={sortOptions}
           defaultValue={sortOptions[0].value}
           onChange={handleSortMenuChange}

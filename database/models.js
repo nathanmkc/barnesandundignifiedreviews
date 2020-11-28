@@ -28,20 +28,19 @@ const model = {
     })
   },
 
-  update: (request, callback) => {
-    console.log(request.body)
-    console.log(request.params.id)
-    db.query(
-      `UPDATE Items SET quantity = ${request.body.newQuantity} WHERE id = ${request.params.id}`,
-      (err, data) => {
-        if (err) {
-          callback(err);
-        } else {
-          callback(null, data);
-        }
-      }
-    );
-  },
+  put: (input, callback) => {
+    if (input.type === 'yes') {
+      Book.updateOne({reviews: {$elemMatch: {_id: input.id}}},{$inc: {"reviews.$[element].helpfulYes": 1}}, {arrayFilters: [{"element._id": input.id}]})
+      .then((results) => {
+        callback(null, results);
+      })
+    } else if (input.type === 'no') {
+      Book.updateOne({reviews: {$elemMatch: {_id: input.id}}},{$inc: {"reviews.$[element].helpfulNo": 1}}, {arrayFilters: [{"element._id": input.id}]})
+      .then((results) => {
+        callback(null,results);
+      })
+    }
+  }
 };
 
 module.exports = model;

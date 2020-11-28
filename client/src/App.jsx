@@ -140,6 +140,16 @@ class App extends React.Component {
     return axios.put(`http://localhost:8000/books/4132539681597/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
+        var index = null;
+        for (var i = 0 ; i < this.state.displayedReviews.length ; i++) {
+          if (this.state.displayedReviews[i]._id === id) {
+            index = i;
+            break;
+          }
+        }
+        var tempReviews = this.state.displayedReviews.slice();
+        type === 'yes' ? tempReviews[index].helpfulYes++ : tempReviews[index].helpfulNo++;
+        this.setState({displayedReviews: tempReviews});
       });
     })
     .catch((err) => {
@@ -199,7 +209,7 @@ class App extends React.Component {
             <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} handleSortMenuChange={this.handleSortMenuChange}/>
             {this.state.displayedReviews.length !== 0 &&
               this.state.displayedReviews.map((review, idx) => {
-                return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx}/>
+                return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx} disabled={this.state[review._id]}/>
               })
             }
             <NavBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} leftArrowClickHandler={this.leftArrowClickHandler} rightArrowClickHandler={this.rightArrowClickHandler}/>
