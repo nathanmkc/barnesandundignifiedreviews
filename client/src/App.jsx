@@ -24,6 +24,7 @@ class App extends React.Component {
       this.findAvgReviewRating = this.findAvgReviewRating.bind(this);
       this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this);
+      this.handleSortMenuChange = this.handleSortMenuChange.bind(this);
       this.voteClickHandler = this.voteClickHandler.bind(this);
       this.leftArrowClickHandler = this.leftArrowClickHandler.bind(this);
       this.rightArrowClickHandler = this.rightArrowClickHandler.bind(this);
@@ -70,6 +71,11 @@ class App extends React.Component {
       }
     },0);
     return total;
+  }
+
+  handleSortMenuChange(e) {
+    e.preventDefault();
+    console.log(e.target.innerHTML);
   }
 
   voteClickHandler(type, id) {
@@ -135,7 +141,7 @@ class App extends React.Component {
             <h2 className="app-header app-component">Customer Reviews</h2>
             <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox avgRating={this.state.avgRating}/>
-            <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length}/>
+            <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} handleSortMenuChange={this.handleSortMenuChange}/>
             {this.state.displayedReviews.length !== 0 &&
               this.state.displayedReviews.map((review, idx) => {
                 return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx}/>

@@ -17,8 +17,6 @@ body {
 
 .app-component {
   display: flex;
-  margin-left: 69px;
-  margin-right: 69px;
 }
 
 em {
@@ -213,6 +211,15 @@ h2.app-header:before {
   font-size: 16px;
   font-family: Lato, sans-serif;
   padding: 15px 10px;
+}
+
+.sort-menu {
+  display:flex;
+  padding-right: 5px;
+}
+
+.sort-dropdown {
+  padding-left: 5px;
 }
 
 
