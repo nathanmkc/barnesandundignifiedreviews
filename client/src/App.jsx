@@ -148,8 +148,10 @@ class App extends React.Component {
           }
         }
         var tempReviews = this.state.displayedReviews.slice();
-        type === 'yes' ? tempReviews[index].helpfulYes++ : tempReviews[index].helpfulNo++;
-        this.setState({displayedReviews: tempReviews});
+        if (index) {
+          type === 'yes' ? tempReviews[index].helpfulYes++ : tempReviews[index].helpfulNo++;
+          this.setState({displayedReviews: tempReviews});
+        }
       });
     })
     .catch((err) => {
