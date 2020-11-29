@@ -17,8 +17,6 @@ body {
 
 .app-component {
   display: flex;
-  margin-left: 69px;
-  margin-right: 69px;
 }
 
 em {
@@ -213,7 +211,19 @@ h2.app-header:before {
   font-size: 16px;
   font-family: Lato, sans-serif;
   padding: 15px 10px;
+  align-items: center;
 }
+
+.sort-menu {
+  display:flex;
+  padding-right: 5px;
+}
+
+.sort-dropdown {
+  padding-left: 5px;
+}
+
+
 
 
 
@@ -323,15 +333,35 @@ h2.app-header:before {
   padding-right:10px;
 }
 
+.helpful-item {
+  background-color: #eeeeee;
+  padding: 3px 10px;
+  margin-left: 7px;
+  height: 100%;
+  color: darkgreen;
+  font-weight: 400 !important;
+}
 
 
 
 
+
+
+
+.app-component.sort-bar.nav-bar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 .arrows {
   display: flex;
 }
 
-.left-arrow {
-  padding-right: 5px;
+.nav-button {
+  padding: 5px !important;
+  border-radius: 0px !important;
+}
+
+.nav-button-right {
+  margin-right: 0px !important;
 }

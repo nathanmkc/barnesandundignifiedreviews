@@ -49,13 +49,22 @@ app.get('/books/:identifier/reviews/summary', (req, res) => {
 
 app.put('/books/:identifier/review/:id', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
-    console.log(typeof(req.params.identifier));
-    console.log(req.params.identifier);
+    model.put({title: req.params.identifier, type: req.body.type, id: req.params.id}, (err, data) => {
+      if (err) {
+        res.status(400).send('Controller: Error in put');
+      } else {
+        res.status(200).end();
+      }
+    });
   } else {
-    console.log(typeof(Number(req.params.identifier)));
-    console.log(Number(req.params.identifier));
-    console.log((req.params.id))
-    console.log(req.body);
+    model.put({ISBN: req.params.identifier, type: req.body.type, id: req.params.id}, (err, data) => {
+      if (err) {
+        console.log('hi')
+        res.status(400).send('Controller: Error in put');
+      } else {
+        res.status(200).end();
+      }
+    });
   }
   res.end();
 })

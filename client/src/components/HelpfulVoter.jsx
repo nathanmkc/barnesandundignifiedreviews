@@ -1,18 +1,18 @@
 import React from 'react';
 
-function HelpfulVoter ({review, voteClickHandler}) {
+function HelpfulVoter ({review, voteClickHandler, disabled}) {
   return (
     <div className="helpful-voter">
-      <p>
+      <p >
         Helpful?
       </p>
-      <p className="left-arrow" onClick={()=>{voteClickHandler('yes', review._id)}}>
-        Yes
+      <p style={{cursor: disabled ? 'default' : 'pointer'}} className="helpful-item helpful-voter-yes" onClick={()=>{voteClickHandler('yes', review._id)}}>
+        Yes · {review.helpfulYes}
       </p>
-      <p className="right-arrow" onClick={()=>{voteClickHandler('no', review._id)}}>
-        No
+      <p style={{cursor: disabled ? 'default' : 'pointer'}} className="helpful-item helpful-voter-no" onClick={()=>{voteClickHandler('no', review._id)}}>
+        No · {review.helpfulNo}
       </p>
-      <p>
+      <p stype={{cursor: 'pointer'}} className="helpful-item helpful-voter-report">
         Report
       </p>
     </div>

@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Icon } from 'semantic-ui-react';
 import HelpfulVoter from './HelpfulVoter.jsx';
 
-function ReviewBody ({review, voteClickHandler}) {
+function ReviewBody ({review, voteClickHandler, disabled}) {
   return (
     <div className="review-body">
       <div className="review-body-rating">
@@ -53,7 +53,7 @@ function ReviewBody ({review, voteClickHandler}) {
           </span>
         </div>
       }
-      <HelpfulVoter review={review} voteClickHandler={voteClickHandler}/>
+      <HelpfulVoter review={review} disabled={disabled} voteClickHandler={voteClickHandler}/>
     </div>
   );
 };

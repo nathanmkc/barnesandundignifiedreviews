@@ -24,6 +24,12 @@ class App extends React.Component {
       this.findAvgReviewRating = this.findAvgReviewRating.bind(this);
       this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this);
+      this.handleSortMenuChange = this.handleSortMenuChange.bind(this);
+      this.sortByFeatured = this.sortByFeatured.bind(this);
+      this.sortByHelpful = this.sortByHelpful.bind(this);
+      this.sortByHelpful = this.sortByHelpful.bind(this);
+      this.sortByHighestRating = this.sortByHighestRating.bind(this);
+      this.sortByLowestRating = this.sortByLowestRating.bind(this);
       this.voteClickHandler = this.voteClickHandler.bind(this);
       this.leftArrowClickHandler = this.leftArrowClickHandler.bind(this);
       this.rightArrowClickHandler = this.rightArrowClickHandler.bind(this);
@@ -72,6 +78,61 @@ class App extends React.Component {
     return total;
   }
 
+  handleSortMenuChange(e) {
+    e.preventDefault();
+    switch (e.target.innerHTML) {
+      case 'Featured':
+        this.sortByFeatured();
+        break;
+      case 'Most Recent':
+        this.sortByRecent();
+        break;
+      case 'Most Helpful':
+        this.sortByHelpful();
+        break;
+      case 'Highest to Lowest Rating':
+        this.sortByHighestRating();
+        break;
+      case 'Lowest to Highest Rating':
+        this.sortByLowestRating();
+    }
+  }
+
+  sortByFeatured() {
+    var selectedReviews = this.state.selectedReviews.slice();
+    selectedReviews.sort((a, b) => b.authorReviews - a.authorReviews);
+    var displayedReviews = selectedReviews.slice(0,8);
+    this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length});
+  }
+
+  sortByRecent() {
+    var selectedReviews = this.state.selectedReviews.slice();
+    selectedReviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    var displayedReviews = selectedReviews.slice(0,8);
+    this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length});
+  }
+
+  sortByHelpful() {
+    var selectedReviews = this.state.selectedReviews.slice();
+    selectedReviews.sort((a, b) => (b.helpfulYes - b.helpfulNo) - (a.helpfulYes - a.helpfulNo));
+    var displayedReviews = selectedReviews.slice(0,8);
+    this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length});
+  }
+
+  sortByHighestRating() {
+    var selectedReviews = this.state.selectedReviews.slice();
+    selectedReviews.sort((a, b) => b.rating - a.rating);
+    var displayedReviews = selectedReviews.slice(0,8);
+    this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length});
+  }
+
+  sortByLowestRating() {
+    var selectedReviews = this.state.selectedReviews.slice();
+    selectedReviews.sort((a, b) => a.rating - b.rating);
+    var displayedReviews = selectedReviews.slice(0,8);
+    this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length});
+  }
+
   voteClickHandler(type, id) {
     if (this.state[id]) {
       return;
@@ -79,6 +140,16 @@ class App extends React.Component {
     return axios.put(`http://localhost:8000/books/4132539681597/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
+        var index = null;
+        for (var i = 0 ; i < this.state.displayedReviews.length ; i++) {
+          if (this.state.displayedReviews[i]._id === id) {
+            index = i;
+            break;
+          }
+        }
+        var tempReviews = this.state.displayedReviews.slice();
+        type === 'yes' ? tempReviews[index].helpfulYes++ : tempReviews[index].helpfulNo++;
+        this.setState({displayedReviews: tempReviews});
       });
     })
     .catch((err) => {
@@ -135,10 +206,10 @@ class App extends React.Component {
             <h2 className="app-header app-component">Customer Reviews</h2>
             <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox avgRating={this.state.avgRating}/>
-            <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length}/>
+            <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} handleSortMenuChange={this.handleSortMenuChange}/>
             {this.state.displayedReviews.length !== 0 &&
               this.state.displayedReviews.map((review, idx) => {
-                return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx}/>
+                return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx} disabled={this.state[review._id]}/>
               })
             }
             <NavBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} leftArrowClickHandler={this.leftArrowClickHandler} rightArrowClickHandler={this.rightArrowClickHandler}/>
