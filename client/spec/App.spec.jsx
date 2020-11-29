@@ -16,7 +16,7 @@ const mockData = [
       "authorReviews": 18,
       "votes": 87,
       "readerType": "Non-Fiction Buff",
-      "rating": 0,
+      "rating": 3,
       "createdAt": "1993-07-31T23:40:23.000Z",
       "title": "aliquip anim nostrud aliqua ad",
       "body": "Et labore velit excepteur ullamco adipisicing enim aute non Lorem. Mollit qui anim id do fugiat. Labore exercitation reprehenderit ipsum in ipsum consequat eiusmod dolor consequat incididunt excepteur commodo ea. Consectetur aute et cupidatat non duis sit dolore non fugiat cillum amet id laboris aliquip.",
@@ -46,7 +46,7 @@ const mockData = [
       "authorReviews": 74,
       "votes": 105,
       "readerType": "Non-Fiction Buff",
-      "rating": 0,
+      "rating": 1,
       "createdAt": "2020-03-18T18:44:57.000Z",
       "title": "eiusmod commodo eiusmod culpa sunt",
       "body": "Deserunt occaecat duis aute labore. Eu non aute proident ex cupidatat aliquip. Consectetur eu ipsum ullamco anim sunt ut duis proident ad laborum veniam ullamco cupidatat in.",
@@ -156,7 +156,7 @@ const mockData = [
           }
       ],
       "recommended": true,
-      "helpfulYes": 0,
+      "helpfulYes": 100,
       "helpfulNo": 16
   },
   {
@@ -226,7 +226,7 @@ const mockData = [
       "authorReviews": 30,
       "votes": 114,
       "readerType": "Book Club Reader",
-      "rating": 0,
+      "rating": 4,
       "createdAt": "2007-05-01T19:29:42.000Z",
       "title": "nisi elit eu adipisicing pariatur",
       "body": "Nulla exercitation reprehenderit enim ea nisi quis est fugiat duis occaecat laborum. Anim ea laboris dolore consequat. Velit culpa id nostrud irure incididunt eiusmod deserunt sunt reprehenderit occaecat culpa. Cillum sunt Lorem ullamco deserunt exercitation deserunt dolore eiusmod consectetur. Magna amet veniam id nisi quis. Deserunt nostrud duis in elit occaecat exercitation cupidatat incididunt exercitation. Laboris esse sint esse cupidatat cupidatat et.",
@@ -256,7 +256,7 @@ const mockData = [
       "authorReviews": 25,
       "votes": 98,
       "readerType": "Casual Reader",
-      "rating": 0,
+      "rating": 5,
       "createdAt": "2004-06-02T07:56:42.000Z",
       "title": "ex non excepteur Lorem tempor",
       "body": "Adipisicing reprehenderit anim sit do velit id non adipisicing qui tempor aliqua fugiat velit adipisicing. Voluptate excepteur consectetur commodo aliquip laborum eu. Aute elit sint labore dolore officia sunt consequat ad. Proident velit sint eu irure ea in consequat culpa sit nulla non.",
@@ -286,7 +286,7 @@ const mockData = [
       "authorReviews": 28,
       "votes": 58,
       "readerType": "Literary Reader",
-      "rating": 0,
+      "rating": 2,
       "createdAt": "2004-08-02T03:44:15.000Z",
       "title": "nulla in culpa nostrud labore",
       "body": "Non ut ullamco laborum excepteur qui commodo in eu veniam cillum. Veniam mollit nulla duis sint fugiat nostrud magna est velit sunt deserunt id. Nulla duis ea adipisicing officia consequat culpa sunt anim esse enim non aliquip. Ex tempor aute proident tempor esse sit occaecat non consequat. Occaecat laboris quis eu amet quis ex nostrud et labore irure ullamco reprehenderit. Aliquip culpa in mollit voluptate anim aliqua tempor do exercitation enim.",
@@ -346,7 +346,7 @@ const mockData = [
       "authorReviews": 37,
       "votes": 57,
       "readerType": "Literary Reader",
-      "rating": 0,
+      "rating": 1,
       "createdAt": "1998-09-04T20:00:21.000Z",
       "title": "adipisicing Lorem quis ea incididunt",
       "body": "Irure aliqua voluptate minim magna sit cillum deserunt consequat ex sunt. Deserunt eiusmod eiusmod sunt aute. Pariatur mollit velit est in Lorem ea.",
@@ -496,7 +496,7 @@ const mockData = [
       "authorReviews": 69,
       "votes": 26,
       "readerType": "Hopeless Romantic",
-      "rating": 0,
+      "rating": 4,
       "createdAt": "1983-06-03T09:17:54.000Z",
       "title": "et quis quis fugiat id",
       "body": "Sit incididunt minim ad cupidatat amet. Ea veniam cupidatat aliquip excepteur. Dolor et adipisicing proident reprehenderit et tempor sit id. Labore veniam cillum est eu irure ullamco in. Et occaecat sint ipsum officia velit laboris eiusmod nostrud nisi ex. Ullamco sit fugiat sunt pariatur sint pariatur quis et est.",
@@ -706,7 +706,7 @@ const mockData = [
       "authorReviews": 72,
       "votes": 193,
       "readerType": "Hopeless Romantic",
-      "rating": 0,
+      "rating": 1,
       "createdAt": "1989-05-31T10:30:40.000Z",
       "title": "proident ex cillum anim ex",
       "body": "Amet consectetur laborum magna ad ea nisi laborum esse ipsum do sint consequat occaecat esse. Laborum esse nisi sit occaecat ea eu consequat dolor consectetur consequat officia dolor cupidatat. Occaecat Lorem dolor culpa anim proident exercitation esse proident aliquip labore.",
@@ -736,7 +736,7 @@ const mockData = [
       "authorReviews": 32,
       "votes": 184,
       "readerType": "Book Club Reader",
-      "rating": 0,
+      "rating": 3,
       "createdAt": "2017-09-03T21:47:56.000Z",
       "title": "quis commodo aute ex tempor",
       "body": "Cillum velit est consequat aliquip qui laboris proident aliquip irure reprehenderit excepteur exercitation pariatur dolor. Id in ut nisi ut. Non ea laboris aute anim.",
@@ -796,7 +796,7 @@ const mockData = [
       "authorReviews": 49,
       "votes": 101,
       "readerType": "Non-Fiction Buff",
-      "rating": 0,
+      "rating": 2,
       "createdAt": "2006-11-09T10:16:33.000Z",
       "title": "dolor id veniam id ipsum",
       "body": "Ipsum et esse voluptate aliqua mollit magna esse commodo consequat excepteur nostrud proident pariatur. Sit reprehenderit veniam laborum exercitation elit nulla do officia anim sint elit aliqua mollit mollit. Adipisicing laboris minim duis velit ipsum aliquip nisi consectetur eu velit incididunt nostrud. Eiusmod consequat voluptate id ipsum. Enim dolor tempor ad nostrud ipsum occaecat deserunt. Laborum veniam nisi voluptate mollit consectetur dolore ipsum excepteur id qui tempor adipisicing dolore in.",
@@ -922,6 +922,56 @@ describe('App component', () => {
       wrapper.update();
       expect(wrapper.state()).toHaveProperty('startIndex', 0);
       expect(wrapper.state()).toHaveProperty('endIndex', 8);
+    });
+  });
+  test('handleSortMenuChange properly sorts by highest to lowest rating', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.handleSortMenuChange({preventDefault: () => {}, target: {innerHTML: 'Highest to Lowest Rating'}});
+      wrapper.update();
+      expect(wrapper.state().displayedReviews[0]).toHaveProperty('rating', 5);
+    });
+  });
+  test('handleSortMenuChange properly sorts by lowest to highest rating', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.handleSortMenuChange({preventDefault: () => {}, target: {innerHTML: 'Lowest to Highest Rating'}});
+      wrapper.update();
+      expect(wrapper.state().displayedReviews[0]).toHaveProperty('rating', 1);
+    });
+  });
+  test('handleSortMenuChange properly sorts by most helpful', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.handleSortMenuChange({preventDefault: () => {}, target: {innerHTML: 'Most Helpful'}});
+      wrapper.update();
+      expect(wrapper.state().displayedReviews[0]).toHaveProperty('helpfulYes', 100);
+    });
+  });
+  test('handleSortMenuChange properly sorts by featured', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.handleSortMenuChange({preventDefault: () => {}, target: {innerHTML: 'Featured'}});
+      wrapper.update();
+      expect(wrapper.state().displayedReviews[0]).toHaveProperty('authorReviews', 78);
+    });
+  });
+  test('handleSortMenuChange properly sorts by mot recent', () => {
+    const wrapper = mount(<App />);
+    const instance = wrapper.instance();
+    return instance.componentDidMount()
+    .then(() => {
+      instance.handleSortMenuChange({preventDefault: () => {}, target: {innerHTML: 'Most Recent'}});
+      wrapper.update();
+      expect(wrapper.state().displayedReviews[0]).toHaveProperty('createdAt', "2020-03-18T18:44:57.000Z");
     });
   });
 });
