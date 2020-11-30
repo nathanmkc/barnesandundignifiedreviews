@@ -16,12 +16,12 @@ const bookSchema = new mongoose.Schema({
     body: String,
     spoilers: Boolean,
     tags: [{
-      tagName: String
+      tagName: String,
     }],
     recommended: Boolean,
     helpfulYes: Number,
-    helpfulNo: Number
-  }]
+    helpfulNo: Number,
+  }],
 });
 
 const Book = mongoose.model('Book', bookSchema);

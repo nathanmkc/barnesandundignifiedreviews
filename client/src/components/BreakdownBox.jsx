@@ -2,7 +2,9 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import StarRatings from 'react-star-ratings';
 
-function BreakdownBox ({avgRating}) {
+import SnapshotBars from './SnapshotBars.jsx';
+
+function BreakdownBox ({ratingSummary, ratingClickHandler}) {
   return (
       <div className="app-component breakdown-box">
         <div className="breakdown-box-top-bar">
@@ -20,17 +22,18 @@ function BreakdownBox ({avgRating}) {
               <div className="breakdown-box-stars">
                 Overall
                 <StarRatings
-                  rating={avgRating}
+                  rating={ratingSummary.avgRating}
                   starDimension="14px"
                   starSpacing=".5px"
                   starRatedColor="orange"
                   className="breakdown-box-summary-stars"
                 />
               </div>
-              {avgRating}
+              {ratingSummary.avgRating}
             </div>
           </div>
         </div>
+        <SnapshotBars ratingSummary={ratingSummary} ratingClickHandler={ratingClickHandler} />
       </div>
   )
 };

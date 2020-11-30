@@ -1,6 +1,8 @@
 const express = require('express');
+
 const app = express();
 const model = require('../database/models.js');
+
 const port = 8000;
 
 app.use(express.json());
@@ -9,7 +11,7 @@ app.use(express.static('client/dist/'));
 
 app.get('/books/:identifier/reviews', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
-    model.get({title: req.params.identifier}, (err, data) => {
+    model.get({ title: req.params.identifier }, (err, data) => {
       if (err) {
         res.status(400).send('Controller: Error in get');
       } else {
@@ -17,7 +19,7 @@ app.get('/books/:identifier/reviews', (req, res) => {
       }
     });
   } else {
-    model.get({ISBN: req.params.identifier}, (err, data) => {
+    model.get({ ISBN: req.params.identifier }, (err, data) => {
       if (err) {
         res.status(400).send('Controller: Error in get');
       } else {
@@ -25,11 +27,11 @@ app.get('/books/:identifier/reviews', (req, res) => {
       }
     });
   }
-})
+});
 
 app.get('/books/:identifier/reviews/summary', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
-    model.getAvg({title: req.params.identifier}, (err, data) => {
+    model.getAvg({ title: req.params.identifier }, (err, data) => {
       if (err) {
         res.status(400).send('Controller: Error in get');
       } else {
@@ -37,7 +39,7 @@ app.get('/books/:identifier/reviews/summary', (req, res) => {
       }
     });
   } else {
-    model.getAvg({ISBN: req.params.identifier}, (err, data) => {
+    model.getAvg({ ISBN: req.params.identifier }, (err, data) => {
       if (err) {
         res.status(400).send('Controller: Error in get');
       } else {
@@ -45,11 +47,11 @@ app.get('/books/:identifier/reviews/summary', (req, res) => {
       }
     });
   }
-})
+});
 
 app.put('/books/:identifier/review/:id', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
-    model.put({title: req.params.identifier, type: req.body.type, id: req.params.id}, (err, data) => {
+    model.put({ title: req.params.identifier, type: req.body.type, id: req.params.id }, (err) => {
       if (err) {
         res.status(400).send('Controller: Error in put');
       } else {
@@ -57,9 +59,8 @@ app.put('/books/:identifier/review/:id', (req, res) => {
       }
     });
   } else {
-    model.put({ISBN: req.params.identifier, type: req.body.type, id: req.params.id}, (err, data) => {
+    model.put({ ISBN: req.params.identifier, type: req.body.type, id: req.params.id }, (err) => {
       if (err) {
-        console.log('hi')
         res.status(400).send('Controller: Error in put');
       } else {
         res.status(200).end();
@@ -67,7 +68,7 @@ app.put('/books/:identifier/review/:id', (req, res) => {
     });
   }
   res.end();
-})
+});
 
 app.listen(port, () => {
   console.log(`Reviews server listening at http://localhost:${port}`);
