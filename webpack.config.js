@@ -1,10 +1,11 @@
-var path = require("path");
-var SRC_DIR = path.join(__dirname, "/client/src");
-var DIST_DIR = path.join(__dirname, "/client/dist");
+const path = require('path');
+
+const SRC_DIR = path.join(__dirname, '/client/src');
+const DIST_DIR = path.join(__dirname, '/client/dist');
 module.exports = {
   entry: `${SRC_DIR}/index.js`,
   output: {
-    filename: "bundle.js",
+    filename: 'bundle.js',
     path: DIST_DIR,
   },
   module: {
@@ -12,33 +13,33 @@ module.exports = {
       {
         test: /\.jsx?/,
         include: SRC_DIR,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          presets: [ "@babel/preset-react", "@babel/preset-env" ],
+          presets: ['@babel/preset-react', '@babel/preset-env'],
         },
       },
       {
         test: /\.css$/,
         use: [{
-                loader: 'style-loader'
-            },
-            {
-                loader: 'css-loader'
-            }
-        ]
+          loader: 'style-loader',
+        },
+        {
+          loader: 'css-loader',
+        },
+        ],
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
-            loader: 'file-loader'
-        }]
+          loader: 'file-loader',
+        }],
       },
       {
         test: /\.(png|jpg|gif)$/,
         use: [{
-            loader: 'file-loader'
-        }]
-      }
+          loader: 'file-loader',
+        }],
+      },
     ],
   },
 };

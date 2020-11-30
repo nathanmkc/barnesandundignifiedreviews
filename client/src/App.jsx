@@ -17,11 +17,11 @@ class App extends React.Component {
           displayedReviews: [],
           startIndex: 0,
           endIndex: 0,
-          avgRating: 0,
+          ratingSummary: {},
           search: ''
       }
       this.getReviews = this.getReviews.bind(this);
-      this.findAvgReviewRating = this.findAvgReviewRating.bind(this);
+      this.createRatingSummary = this.createRatingSummary.bind(this);
       this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this);
       this.handleSortMenuChange = this.handleSortMenuChange.bind(this);
@@ -33,6 +33,8 @@ class App extends React.Component {
       this.voteClickHandler = this.voteClickHandler.bind(this);
       this.leftArrowClickHandler = this.leftArrowClickHandler.bind(this);
       this.rightArrowClickHandler = this.rightArrowClickHandler.bind(this);
+      this.countStars = this.countStars.bind(this);
+      this.ratingClickHandler = this.ratingClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +45,7 @@ class App extends React.Component {
     return axios.get('http://localhost:8000/books/4132539681597/reviews')
     .then((results) => {
       this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
-        this.findAvgReviewRating();
+        this.createRatingSummary();
       });
     })
     .catch((err) => {
@@ -56,15 +58,36 @@ class App extends React.Component {
     this.setState({search: e.target.value})
   }
 
-  findAvgReviewRating() {
+  createRatingSummary() {
     var total = this.state.allReviews.reduce((acc, review) => {return acc + review.rating},0);
     var avg;
     if (this.state.allReviews.length === 0) {
       avg=0;
     } else {
-      var avg = total/this.state.allReviews.length;
+      avg = total/this.state.allReviews.length;
     }
-    this.setState({avgRating: Number(avg.toFixed(1))});
+    var ratingSummary = {
+      avgRating: Number(avg.toFixed(1)),
+      total: this.state.allReviews.length,
+      fiveStarTotal: this.countStars(5),
+      fourStarTotal: this.countStars(4),
+      threeStarTotal: this.countStars(3),
+      twoStarTotal: this.countStars(2),
+      oneStarTotal: this.countStars(1)
+    }
+    this.setState({ratingSummary: ratingSummary});
+  }
+
+  countStars(number) {
+    var counter = 0;
+    if (this.state.allReviews.length > 0) {
+      this.state.allReviews.forEach(review => {
+        if (review.rating === number) {
+          counter++;
+        }
+      })
+    }
+    return counter;
   }
 
   countRecommendedReviews() {
@@ -76,6 +99,10 @@ class App extends React.Component {
       }
     },0);
     return total;
+  }
+
+  ratingClickHandler(rating) {
+    console.log(rating);
   }
 
   handleSortMenuChange(e) {
@@ -206,8 +233,8 @@ class App extends React.Component {
       return (
           <div className="main">
             <h2 className="app-header app-component">Customer Reviews</h2>
-            <SearchBox avgRating={this.state.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
-            <BreakdownBox avgRating={this.state.avgRating}/>
+            <SearchBox avgRating={this.state.ratingSummary.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
+            <BreakdownBox ratingSummary={this.state.ratingSummary} ratingClickHandler={this.ratingClickHandler}/>
             <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} handleSortMenuChange={this.handleSortMenuChange}/>
             {this.state.displayedReviews.length !== 0 &&
               this.state.displayedReviews.map((review, idx) => {
