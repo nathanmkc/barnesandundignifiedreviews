@@ -27,9 +27,9 @@ const sortOptions = [
     text: 'Lowest to Highest Rating',
     value: 'Lowest to Highest Rating',
   },
-]
+];
 
-function SortBar ({start, end, total, handleSortMenuChange}) {
+function SortBar({ start, end, total, handleSortMenuChange }) {
   return (
     <div className="app-component sort-bar">
       <div>
@@ -48,6 +48,6 @@ function SortBar ({start, end, total, handleSortMenuChange}) {
       </span>
     </div>
   );
-};
+}
 
 export default SortBar;

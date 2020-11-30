@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar.jsx';
 import StarRatings from 'react-star-ratings';
 
-function SearchBox ({avgRating, reviewCount, recommendedReviewCount, handleSearchChange}) {
+function SearchBox({ avgRating, reviewCount, recommendedReviewCount, handleSearchChange }) {
     return (
       <div className="app-component search-box">
         <div className="summary-bar">
