@@ -165,7 +165,7 @@ class App extends React.Component {
     if (this.state[id]) {
       return;
     }
-    return axios.put(`http://localhost:8000/books/4132539681597/review/${id}`, {type: type})
+    return axios.put(`http://localhost:8000/books/9780765326386/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
         var index = null;
