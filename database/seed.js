@@ -5,8 +5,8 @@ const Book = require('./Book.js');
 // TODO: Generate sample data
 const samplePosts = [
   {
-    title: 'tempor et consequat',
-    ISBN: 1987312765593,
+    title: 'A Promised Land',
+    ISBN: 9781524763169,
     reviews: [
       {
         author: 'Bettye Miles',
@@ -323,8 +323,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'nostrud ex commodo',
-    ISBN: 4132539681597,
+    title: 'World of Wonders: In Praise of Fireflies, Whale Sharks, and Other Astonishments (B&N Exclusive Gift Edition)',
+    ISBN: 9781571311931,
     reviews: [
       {
         author: 'Beryl Mccarty',
@@ -1083,8 +1083,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'esse quis dolor',
-    ISBN: 1309946828801,
+    title: 'Rhythm of War (Stormlight Archive Series #4)',
+    ISBN: 9780765326386,
     reviews: [
       {
         author: 'Pacheco Arnold',
@@ -1635,8 +1635,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'pariatur ea velit',
-    ISBN: 6099696975484,
+    title: 'The Trouble with Peace',
+    ISBN: 9780316187183,
     reviews: [
       {
         author: 'Cherry Joyner',
@@ -2213,8 +2213,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'minim et culpa',
-    ISBN: 8561540756623,
+    title: 'The Magicians (Magicians Series #1)',
+    ISBN: 9780670020553,
     reviews: [
       {
         author: 'Slater Mcguire',
@@ -2687,8 +2687,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'qui mollit dolor',
-    ISBN: 8612591192831,
+    title: 'Soleri: A Novel',
+    ISBN: 9780765386489,
     reviews: [
       {
         author: 'Esmeralda Buckner',
@@ -2927,8 +2927,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'anim adipisicing ullamco',
-    ISBN: 3610233135222,
+    title: 'The Empire\'s Ghost: A Novel',
+    ISBN: 9781250088482,
     reviews: [
       {
         author: 'Saunders Mason',
@@ -3141,8 +3141,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'culpa aute dolor',
-    ISBN: 4866931329136,
+    title: 'Martha Hall Kelly',
+    ISBN: 9781524796372,
     reviews: [
       {
         author: 'Shirley Phillips',
@@ -3485,8 +3485,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'proident commodo veniam',
-    ISBN: 1671428951840,
+    title: 'Rumaan Alam',
+    ISBN: 9780062667632,
     reviews: [
       {
         author: 'Solis Hill',
@@ -4141,8 +4141,8 @@ const samplePosts = [
     ],
   },
   {
-    title: 'esse veniam pariatur',
-    ISBN: 6351458435296,
+    title: 'Alex Trebek',
+    ISBN: 9781982157999,
     reviews: [
       {
         author: 'Estelle Orr',

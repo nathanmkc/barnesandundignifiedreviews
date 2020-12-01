@@ -10,56 +10,57 @@ import NavBar from './components/NavBar.jsx';
 
 class App extends React.Component {
   constructor(props) {
-      super(props)
-      this.state = {
-          allReviews: [],
-          selectedReviews: [],
-          displayedReviews: [],
-          startIndex: 0,
-          endIndex: 0,
-          ratingSummary: {},
-          search: ''
-      }
-      this.getReviews = this.getReviews.bind(this);
-      this.createRatingSummary = this.createRatingSummary.bind(this);
-      this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
-      this.handleSearchChange = this.handleSearchChange.bind(this);
-      this.handleSortMenuChange = this.handleSortMenuChange.bind(this);
-      this.sortByFeatured = this.sortByFeatured.bind(this);
-      this.sortByHelpful = this.sortByHelpful.bind(this);
-      this.sortByHelpful = this.sortByHelpful.bind(this);
-      this.sortByHighestRating = this.sortByHighestRating.bind(this);
-      this.sortByLowestRating = this.sortByLowestRating.bind(this);
-      this.voteClickHandler = this.voteClickHandler.bind(this);
-      this.leftArrowClickHandler = this.leftArrowClickHandler.bind(this);
-      this.rightArrowClickHandler = this.rightArrowClickHandler.bind(this);
-      this.countStars = this.countStars.bind(this);
-      this.ratingClickHandler = this.ratingClickHandler.bind(this);
+    super(props);
+    this.state = {
+      allReviews: [],
+      selectedReviews: [],
+      displayedReviews: [],
+      startIndex: 0,
+      endIndex: 0,
+      ratingSummary: {},
+      search: '',
+    };
+    this.getReviews = this.getReviews.bind(this);
+    this.createRatingSummary = this.createRatingSummary.bind(this);
+    this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSortMenuChange = this.handleSortMenuChange.bind(this);
+    this.sortByFeatured = this.sortByFeatured.bind(this);
+    this.sortByHelpful = this.sortByHelpful.bind(this);
+    this.sortByHelpful = this.sortByHelpful.bind(this);
+    this.sortByHighestRating = this.sortByHighestRating.bind(this);
+    this.sortByLowestRating = this.sortByLowestRating.bind(this);
+    this.voteClickHandler = this.voteClickHandler.bind(this);
+    this.leftArrowClickHandler = this.leftArrowClickHandler.bind(this);
+    this.rightArrowClickHandler = this.rightArrowClickHandler.bind(this);
+    this.countStars = this.countStars.bind(this);
+    this.ratingClickHandler = this.ratingClickHandler.bind(this);
   }
 
   componentDidMount() {
     return this.getReviews();
   }
 
-  getReviews() {
-    return axios.get('http://localhost:8000/books/4132539681597/reviews')
-    .then((results) => {
-      this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
-        this.createRatingSummary();
-      });
-    })
-    .catch((err) => {
-      console.log('error in get request to reviews:' + err);
-    })
-  }
-
   handleSearchChange(e) {
     e.preventDefault();
-    this.setState({search: e.target.value})
+    this.setState({search: e.target.value});
   }
 
+  getReviews() {
+    return axios.get('http://localhost:8000/books/9780765326386/reviews')
+      .then((results) => {
+      this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
+          this.createRatingSummary();
+        });
+      })
+      .catch((err) => {
+        console.log('error in get request to reviews:' + err);
+      });
+  }
+
+
   createRatingSummary() {
-    var total = this.state.allReviews.reduce((acc, review) => {return acc + review.rating},0);
+    const total = this.state.allReviews.reduce((acc, review) => {return acc + review.rating},0);
     var avg;
     if (this.state.allReviews.length === 0) {
       avg=0;
