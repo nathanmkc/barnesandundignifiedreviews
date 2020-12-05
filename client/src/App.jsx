@@ -47,7 +47,11 @@ class App extends React.Component {
   }
 
   getReviews() {
-    return axios.get('http://localhost:8000/books/9780765326386/reviews')
+    var queryUrl = window.location.search;
+    var urlParams = new URLSearchParams(queryUrl);
+    var paramIsbn = urlParams.get('isbn');
+
+    return axios.get(`http://localhost:8000/books/${paramIsbn}/reviews`)
       .then((results) => {
       this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
           this.createRatingSummary();
@@ -165,7 +169,10 @@ class App extends React.Component {
     if (this.state[id]) {
       return;
     }
-    return axios.put(`http://localhost:8000/books/9780765326386/review/${id}`, {type: type})
+    var queryUrl = window.location.search;
+    var urlParams = new URLSearchParams(queryUrl);
+    var paramIsbn = urlParams.get('isbn');
+    return axios.put(`http://localhost:8000/books/${paramIsbn}/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
         var index = null;

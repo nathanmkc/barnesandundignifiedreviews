@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const model = require('../database/models.js');
@@ -8,6 +9,7 @@ const port = 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('client/dist/'));
+app.use(cors());
 
 app.get('/books/:identifier/reviews', (req, res) => {
   if (Number.isNaN(Number(req.params.identifier))) {
