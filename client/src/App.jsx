@@ -245,8 +245,8 @@ class App extends React.Component {
             <BreakdownBox ratingSummary={this.state.ratingSummary} ratingClickHandler={this.ratingClickHandler}/>
             <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} handleSortMenuChange={this.handleSortMenuChange}/>
             {this.state.displayedReviews.length !== 0 &&
-              this.state.displayedReviews.map((review, idx) => {
-                return <Review review={review} voteClickHandler={this.voteClickHandler} key={idx} disabled={this.state[review._id]}/>
+              this.state.displayedReviews.map((review) => {
+                return <Review review={review} voteClickHandler={this.voteClickHandler} key={review._id} disabled={this.state[review._id]}/>
               })
             }
             <NavBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} leftArrowClickHandler={this.leftArrowClickHandler} rightArrowClickHandler={this.rightArrowClickHandler}/>
