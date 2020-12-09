@@ -1,13 +1,13 @@
-# Project Name
+# Barnes and Undignified Reviews
 
-> Project description
+> The reviews service for a clone of Barnes and Nobel's webpage for viewing a single book
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Sweet-Treat/barnesandundignifiedItemSelection
+  - https://github.com/Sweet-Treat/barnesandundignifiedAlsoBought
+  - https://github.com/Sweet-Treat/barnesandundignifiedProductAndAuthor
+  - https://github.com/Sweet-Treat/barnesandundignifiedreviewsproxy
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@
 
 ## Usage
 
-> Some usage instructions
+> use url params to specify an ISBN number for a specific book to load review module for that book. Dropdown menu can be used to sort reviews by different metrics, and the arrows at the bottom can be used to traverse the reviews if there are more that the 8 review maximum that can be displayed on one page.
 
 ## Requirements
 

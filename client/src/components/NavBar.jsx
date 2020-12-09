@@ -18,8 +18,6 @@ function NavBar ({start, end, total, leftArrowClickHandler, rightArrowClickHandl
             <Icon name="caret right" size='large' />
           </Button.Content>
         </Button>
-        {/* <div className="left-arrow" onClick={leftArrowClickHandler}>Left</div>
-        <div onClick={rightArrowClickHandler}>Right</div> */}
       </div>
     </div>
   );

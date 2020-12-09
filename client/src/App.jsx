@@ -7,6 +7,7 @@ import BreakdownBox from './components/BreakdownBox.jsx';
 import Review from './components/Review.jsx';
 import SortBar from './components/SortBar.jsx';
 import NavBar from './components/NavBar.jsx';
+import Filters from './components/Filters.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class App extends React.Component {
       endIndex: 0,
       ratingSummary: {},
       search: '',
+      starsSelected: [],
     };
+
     this.getReviews = this.getReviews.bind(this);
     this.createRatingSummary = this.createRatingSummary.bind(this);
     this.countRecommendedReviews = this.countRecommendedReviews.bind(this);
@@ -35,6 +38,9 @@ class App extends React.Component {
     this.rightArrowClickHandler = this.rightArrowClickHandler.bind(this);
     this.countStars = this.countStars.bind(this);
     this.ratingClickHandler = this.ratingClickHandler.bind(this);
+    this.grabRatingReviews = this.grabRatingReviews.bind(this);
+    this.filterClickHandler = this.filterClickHandler.bind(this);
+    this.clearAllClickHandler = this.clearAllClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -107,7 +113,68 @@ class App extends React.Component {
   }
 
   ratingClickHandler(rating) {
-    console.log(rating);
+    //if this rating is already being sorted for
+    if (this.state.starsSelected.includes(rating)) {
+      return;
+    } else {
+      //if there are no ratings being sorted for
+      if (this.state.starsSelected.length === 0) {
+        var thisRatingReviews = this.grabRatingReviews(rating);
+        var displayedReviews = thisRatingReviews.slice(0,8);
+        this.setState({selectedReviews: thisRatingReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length, starsSelected: [rating]});
+        //set selected reviews to be only reviews with this rating
+      //if there are already other ratings being sorted for
+      } else {
+        var thisRatingReviews = this.grabRatingReviews(rating);
+        var selectedReviews = this.state.selectedReviews;
+        thisRatingReviews.forEach(review => {selectedReviews.push(review)});
+        var displayedReviews = selectedReviews.slice(0,8);
+        var starsSelected = this.state.starsSelected;
+        starsSelected.push(rating);
+        starsSelected.sort();
+        this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length, starsSelected: starsSelected});
+        //add reviews with this rating to selected reviews
+      }
+    }
+  }
+
+  filterClickHandler(filter) {
+    if (this.state.starsSelected.length === 1) {
+      this.clearAllClickHandler();
+    } else {
+      var newReviews = [];
+      var selectedReviews = this.state.selectedReviews;
+      selectedReviews.forEach(review => {
+        if (review.rating !== filter) {
+          newReviews.push(review);
+        }
+      })
+      var newSelectedStars = [];
+      var selectedStars = this.state.starsSelected;
+      selectedStars.forEach(star => {
+        if (star !== filter) {
+          newSelectedStars.push(star);
+        }
+      })
+      var displayedReviews = newReviews.slice(0,8);
+      this.setState({selectedReviews: newReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length, starsSelected: newSelectedStars});
+    }
+  }
+
+  clearAllClickHandler() {
+    var selectedReviews = this.state.allReviews;
+    var displayedReviews = selectedReviews.slice(0,8);
+    this.setState({selectedReviews: selectedReviews, displayedReviews: displayedReviews, startIndex: 0, endIndex: displayedReviews.length, starsSelected: []});
+  }
+
+  grabRatingReviews(rating) {
+    var result = [];
+    this.state.allReviews.forEach(review => {
+      if (review.rating === rating) {
+        result.push(review)
+      }
+    })
+    return result;
   }
 
   handleSortMenuChange(e) {
@@ -244,7 +311,10 @@ class App extends React.Component {
             <SearchBox avgRating={this.state.ratingSummary.avgRating} reviewCount={this.state.allReviews.length} recommendedReviewCount={this.countRecommendedReviews()} handleSearchChange={this.handleSearchChange}/>
             <BreakdownBox ratingSummary={this.state.ratingSummary} ratingClickHandler={this.ratingClickHandler}/>
             <SortBar start={this.state.startIndex} end={this.state.endIndex} total={this.state.selectedReviews.length} handleSortMenuChange={this.handleSortMenuChange}/>
-            {this.state.displayedReviews.length !== 0 &&
+            {this.state.starsSelected.length > 0 &&
+              <Filters filters={this.state.starsSelected} filterClickHandler={this.filterClickHandler} clearAllClickHandler={this.clearAllClickHandler}/>
+            }
+            {this.state.displayedReviews.length > 0 &&
               this.state.displayedReviews.map((review) => {
                 return <Review review={review} voteClickHandler={this.voteClickHandler} key={review._id} disabled={this.state[review._id]}/>
               })
