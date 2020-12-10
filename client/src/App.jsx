@@ -179,7 +179,7 @@ class App extends React.Component {
 
   handleSortMenuChange(e) {
     e.preventDefault();
-    switch (e.target.innerHTML) {
+    switch (e.target.innerHTML.toString()) {
       case 'Featured':
         this.sortByFeatured();
         break;
@@ -193,6 +193,21 @@ class App extends React.Component {
         this.sortByHighestRating();
         break;
       case 'Lowest to Highest Rating':
+        this.sortByLowestRating();
+        break;
+      case '<span class="text">Featured</span>':
+        this.sortByFeatured();
+        break;
+      case '<span class="text">Most Recent</span>':
+        this.sortByRecent();
+        break;
+      case '<span class="text">Most Helpful</span>':
+        this.sortByHelpful();
+        break;
+      case '<span class="text">Highest to Lowest Rating</span>':
+        this.sortByHighestRating();
+        break;
+      case '<span class="text">Lowest to Highest Rating</span>':
         this.sortByLowestRating();
     }
   }
@@ -250,7 +265,7 @@ class App extends React.Component {
           }
         }
         var tempReviews = this.state.displayedReviews.slice();
-        if (index) {
+        if (index !== null) {
           type === 'yes' ? tempReviews[index].helpfulYes++ : tempReviews[index].helpfulNo++;
           this.setState({displayedReviews: tempReviews});
         }
