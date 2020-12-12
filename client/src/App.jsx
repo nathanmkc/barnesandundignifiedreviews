@@ -181,32 +181,22 @@ class App extends React.Component {
     e.preventDefault();
     switch (e.target.innerHTML.toString()) {
       case 'Featured':
-        this.sortByFeatured();
-        break;
-      case 'Most Recent':
-        this.sortByRecent();
-        break;
-      case 'Most Helpful':
-        this.sortByHelpful();
-        break;
-      case 'Highest to Lowest Rating':
-        this.sortByHighestRating();
-        break;
-      case 'Lowest to Highest Rating':
-        this.sortByLowestRating();
-        break;
       case '<span class="text">Featured</span>':
         this.sortByFeatured();
         break;
+      case 'Most Recent':
       case '<span class="text">Most Recent</span>':
         this.sortByRecent();
         break;
+      case 'Most Helpful':
       case '<span class="text">Most Helpful</span>':
         this.sortByHelpful();
         break;
+      case 'Highest to Lowest Rating':
       case '<span class="text">Highest to Lowest Rating</span>':
         this.sortByHighestRating();
         break;
+      case 'Lowest to Highest Rating':
       case '<span class="text">Lowest to Highest Rating</span>':
         this.sortByLowestRating();
     }
