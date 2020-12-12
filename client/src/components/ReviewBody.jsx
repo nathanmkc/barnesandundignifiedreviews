@@ -35,12 +35,20 @@ function ReviewBody ({review, voteClickHandler, disabled}) {
           <Icon name="tags" className="tag-icon"/>Tags:
         </span>
         <span className="spoiler-bar-variable">
-          {review.tags.map((tag) => {
-            return (
-              <span className="tag">
-                {tag.tagName + ','}
-              </span>
-          )})}
+          {review.tags.map((tag, index) => {
+            if (index < review.tags.length-1) {
+              return (
+                <span className="tag">
+                  {tag.tagName + ','}
+                </span>
+              )
+            } else {
+              return (
+                <span className="tag">
+                  {tag.tagName}
+                </span>
+              )
+            }})}
         </span>
       </div>
       {review.recommended &&
