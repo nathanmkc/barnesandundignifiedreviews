@@ -21,6 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        // include: SRC_DIR,
         use: [{
           loader: 'style-loader',
         },
@@ -31,12 +32,14 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // include: SRC_DIR,
         use: [{
           loader: 'file-loader',
         }],
       },
       {
         test: /\.(png|jpg|gif)$/,
+        // include: SRC_DIR,
         use: [{
           loader: 'file-loader',
         }],

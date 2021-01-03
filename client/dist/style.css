@@ -283,7 +283,45 @@
 
 
 
+#reviews .filter {
+  background-color: #3d6db5;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  width: 73px;
+  text-align: center;
+  height: 38px;
+  margin: 2px;
+  padding-top: 9px;
+  cursor: pointer;
+}
 
+#reviews .clear-filter {
+  color: #2a5a35;
+  border: solid 1px;
+  border-color: #2a5a35;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  width: 80px;
+  text-align: center;
+  height: 38px;
+  margin: 2px;
+  padding-top: 9px;
+  cursor: pointer;
+}
+
+#reviews .filter-x {
+  font-size: .7em;
+  background-color: white;
+}
+
+#reviews .clear-filter-x {
+  font-size: .7em;
+  background-color: #2a5a35;
+  color: white;
+}
 
 
 
