@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUri = 'mongodb://localhost/barnesandundignified';
+const mongoUri = 'mongodb://username:password@8.216.81.116:27017/barnesandundignified';
 
 const db = mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 

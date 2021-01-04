@@ -73,5 +73,5 @@ app.put('/books/:identifier/review/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Reviews server listening at http://localhost:${port}`);
+  console.log(`Reviews server listening at http://18.191.163.231:${port}`);
 });
