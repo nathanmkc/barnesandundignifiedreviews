@@ -57,7 +57,7 @@ class App extends React.Component {
     var urlParams = new URLSearchParams(queryUrl);
     var paramIsbn = urlParams.get('isbn');
 
-    return axios.get(`http://18.191.163.231:8000/books/${paramIsbn}/reviews`)
+    return axios.get(`http://3.140.58.207:8000/books/${paramIsbn}/reviews`)
       .then((results) => {
       this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
           this.createRatingSummary();
@@ -244,7 +244,7 @@ class App extends React.Component {
     var queryUrl = window.location.search;
     var urlParams = new URLSearchParams(queryUrl);
     var paramIsbn = urlParams.get('isbn');
-    return axios.put(`http://18.191.163.231:8000/books/${paramIsbn}/review/${id}`, {type: type})
+    return axios.put(`http://3.140.58.207:8000/books/${paramIsbn}/review/${id}`, {type: type})
     .then(() => {
       this.setState({[id]: 'disabled'},()=> {
         var index = null;

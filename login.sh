@@ -1,1 +1,1 @@
-ssh -i "/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/sweetTreat.pem"  ec2-user@ec2-18-191-163-231.us-east-2.compute.amazonaws.com
+ssh -i "/Users/nathankelleher-crew/Desktop/FEC/barnesandundignifiedreviews/sweetTreat.pem"  ec2-user@ec2-3-140-58-207.us-east-2.compute.amazonaws.com
