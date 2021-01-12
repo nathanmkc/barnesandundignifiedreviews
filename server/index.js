@@ -8,7 +8,7 @@ const port = 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('client/dist/'));
+app.use(express.static('client/public/'));
 app.use(cors());
 
 app.get('/books/:identifier/reviews', (req, res) => {
@@ -73,5 +73,5 @@ app.put('/books/:identifier/review/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Reviews server listening at http://18.191.163.231:${port}`);
+  console.log(`Reviews server listening at http://3.140.58.207:${port}`);
 });

@@ -3,6 +3,7 @@ const path = require('path');
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
   entry: `${SRC_DIR}/index.js`,
   output: {
@@ -14,6 +15,7 @@ module.exports = {
       {
         test: /\.jsx?/,
         include: SRC_DIR,
+        //exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-react', '@babel/preset-env'],
@@ -21,7 +23,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // include: SRC_DIR,
+        //include: SRC_DIR,
+        //exclude: /node_modules/,
         use: [{
           loader: 'style-loader',
         },
@@ -32,14 +35,16 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        // include: SRC_DIR,
+        //include: SRC_DIR,
+        //exclude: /node_modules/,
         use: [{
           loader: 'file-loader',
         }],
       },
       {
         test: /\.(png|jpg|gif)$/,
-        // include: SRC_DIR,
+        //include: SRC_DIR,
+        //exclude: /node_modules/,
         use: [{
           loader: 'file-loader',
         }],
