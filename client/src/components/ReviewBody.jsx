@@ -1,8 +1,11 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { Icon } from 'semantic-ui-react';
 import HelpfulVoter from './HelpfulVoter.jsx';
+
+dayjs.extend(relativeTime);
 
 function ReviewBody ({review, voteClickHandler, disabled}) {
   return (
@@ -14,7 +17,7 @@ function ReviewBody ({review, voteClickHandler, disabled}) {
           starSpacing=".5px"
           starRatedColor="orange"
         />
-        <span className="review-body-dot">·</span><span className="review-body-moment">{moment(review.createdAt).fromNow()}</span>
+        <span className="review-body-dot">·</span><span className="review-body-moment">{dayjs().to(dayjs(review.createdAt))}</span>
       </div>
       <div className="review-body-title">
         {review.title}
