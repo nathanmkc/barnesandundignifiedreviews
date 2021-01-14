@@ -1,10 +1,13 @@
 const path = require('path');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
-const DIST_DIR = path.join(__dirname, '/client/dist');
+const DIST_DIR = path.join(__dirname, '/client/public/dist');
 module.exports = {
-  mode: 'production',
-  devtool: 'source-map',
+  mode: 'development',
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
+  },
   entry: `${SRC_DIR}/index.js`,
   output: {
     filename: 'bundle.js',
@@ -15,7 +18,7 @@ module.exports = {
       {
         test: /\.jsx?/,
         include: SRC_DIR,
-        //exclude: /node_modules/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-react', '@babel/preset-env'],
@@ -25,29 +28,19 @@ module.exports = {
         test: /\.css$/,
         //include: SRC_DIR,
         //exclude: /node_modules/,
-        use: [{
-          loader: 'style-loader',
-        },
-        {
-          loader: 'css-loader',
-        },
-        ],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         //include: SRC_DIR,
         //exclude: /node_modules/,
-        use: [{
-          loader: 'file-loader',
-        }],
+        use: ['file-loader'],
       },
       {
         test: /\.(png|jpg|gif)$/,
         //include: SRC_DIR,
         //exclude: /node_modules/,
-        use: [{
-          loader: 'file-loader',
-        }],
+        use: ['file-loader'],
       },
     ],
   },
