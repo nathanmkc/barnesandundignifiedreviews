@@ -57,7 +57,7 @@ class App extends React.Component {
     var urlParams = new URLSearchParams(queryUrl);
     var paramIsbn = urlParams.get('isbn');
 
-    return axios.get(`http://localhost:8000/books/${paramIsbn}/reviews`)
+    return axios.get(`http://3.140.58.207:8000/books/${paramIsbn}/reviews`)
       .then((results) => {
       this.setState({allReviews: results.data, selectedReviews: results.data, displayedReviews: results.data.slice(0,8), endIndex: results.data.slice(0,8).length}, () => {
           this.createRatingSummary();
