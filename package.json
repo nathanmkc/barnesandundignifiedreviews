@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "db:setup": "node database/seed.js",
-    "react-dev": "webpack --watch",
+    "build": "webpack --watch",
     "test": "jest --config ./jest.config.json --verbose --coverage",
     "test:watch": "jest --config ./jest.config.json --watchAll --verbose",
     "test:coverage": "jest --config ./jest.config.json --verbose --coverage"
