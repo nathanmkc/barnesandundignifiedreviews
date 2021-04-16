@@ -1,6 +1,6 @@
 # Barnes and Undignified Reviews
 
-> Reviews microservice for a bookseller's website designed using service oriented architecture. Reviews are stored in mongoDB, and can be upvoted and downvoted, as well as sorted based on various parameters.
+> Reviews microservice for a bookseller's website designed using service oriented architecture. Front-end is created using React components. Reviews are stored in mongoDB, and can be upvoted and downvoted, as well as sorted based on various parameters.
 
 ## Related Projects
 
@@ -9,20 +9,14 @@
   - https://github.com/Sweet-Treat/barnesandundignifiedProductAndAuthor
   - https://github.com/Sweet-Treat/barnesandundignifiedreviewsproxy
 
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
 ## Usage
-from root directory
+From root directory:
 ### Run npm install
 ```
 npm install
 ```
 ### MongoDB Database Setup
-Edit /database/index.js line 3 to have your MongoDB username, password, and ip adress
+Edit /database/index.js line 3 to have your MongoDB username, password, and ip address
 ```
 npm run db:setup
 ```
