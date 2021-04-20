@@ -2,6 +2,8 @@
 
 > Reviews microservice for a bookseller's website designed using service oriented architecture. Front-end is created using React components. Reviews are stored in mongoDB, and can be upvoted and downvoted, as well as sorted based on various parameters.
 
+![Alt text](/sampleScreenshot.png?raw=true "Screenshot of microservice")
+
 ## Related Projects
 
   - https://github.com/Sweet-Treat/barnesandundignifiedItemSelection

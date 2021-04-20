@@ -8,10 +8,10 @@ function SearchBar({ handleSearchChange }) {
         <input type="text" className="search-input" placeholder="Search topics and reviews" onChange={handleSearchChange} />
       </label>
       <SearchIcon
-        font-size="x-large"
+        fontSize="x-large"
         style={
        {
-         position: 'absolute', 'background-color': '#ededed', width: '70px', padding: '4px', height: '32px',
+         position: 'absolute', 'backgroundColor': '#ededed', width: '70px', padding: '4px', height: '32px',
        }
       }
       />
